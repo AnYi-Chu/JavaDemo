@@ -1,6 +1,6 @@
-import ioc.annotation.UserService;
-import ioc.annotation.config.SpirngConfig;
-import ioc.xml.User;
+import spring.ioc.annotation.UserService;
+import spring.ioc.annotation.config.SpirngConfig;
+import spring.ioc.xml.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+//
+<script type="text/javascript" th:src="@{/static/js/axios.min.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<h1>首页</h1>
+<a th:href="@{/target}">访问目标页面target.html</a>
+<form th:action="@{/test}" method="post">
+    <input type="submit" value="测试@RequestMapping的method属性">
+</form>
+<a th:href="@{/getTarget}">测试@GetMapping注解</a>
+<a th:href="@{/getParamsTarget(username='admin',password=123456)}">测试@RequestMapping的params属性</a>
+<a th:href="@{/getHeadersTarget}">测试@RequestMapping的headers属性</a>
+<a th:href="@{/getRestTarget/1/'abc'}">测试rest风格</a>
+<a th:href="@{/servletAPITarget(username='admin',password=123)}">测试servletAPI获取参数</a>
+<a th:href="@{/ParamTarget(username='admin',password=123)}">测试控制器的形参获取参数</a>
+<form th:action="@{/pojoTarget}" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="测试接收实体类">
+</form>
+<a th:href="@{/requestByServletAPI}">测试servletAPI向request域对象共享数据</a>
+<a th:href="@{/requestByModelAndView}">测试modelAndView向request域对象共享数据</a>
+<a th:href="@{/requestByModelTarget}">测试model向request域对象共享数据</a>
+<a th:href="@{/requestByMapTarget}">测试map向request域对象共享数据</a>
+<a th:href="@{/requestByModelMapTarget}">测试map向request域对象共享数据</a>
+<a th:href="@{/sessionByServletAPI}">测试servletAPI向session域对象共享数据</a>
+<a th:href="@{/applicationByServletAPI}">测试servletAPI向application域对象共享数据</a>
+<a th:href="@{/thymeleafView}">测试thymeleafView</a>
+<a th:href="@{/forward}">测试转发</a>
+<a th:href="@{/redirect}">测试重定向</a>
+<a th:href="@{/user}">测试查询所有信息</a>
+<a th:href="@{/user/1}">测试查询特定信息</a>
+<form th:action="@{/user}" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="添加">
+</form>
+<form th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="修改">
+</form>
+<a th:href="@{/selectAll}">测试查询员工信息</a>
+<form th:action="@{/requestBody}" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="测试@RequestBody">
+</form>
+<form th:action="@{/requestEntity}" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="测试requestEntity">
+</form>
+<a th:href="@{/response}">测试servletAPI的response对象响应浏览器数据</a>
+<a th:href="@{/responseBody}">测试@ResponseBody</a>
+<div id="app">
+    <a @click="axios" href="@{/ajax}">测试ajax</a>
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        methods: {
+            axios: function (event) {
+                axios({
+                    methods: "post",
+                    url: event.target.href,
+                    params: {
+                        username: "admin",
+                        password: "123456"
+                    }
+                }).then(function (response) {
+                    alert(response);
+                });
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+<a th:href="@{/interceptor}">测试异常处理</a>
+<a th:href="@{/exceptionHandler}">测试异常处理</a>
+</body>
+</html>

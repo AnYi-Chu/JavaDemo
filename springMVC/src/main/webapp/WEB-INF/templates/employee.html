@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="dataTable" border="1" cellspacing="0" cellpadding="0" style="text-align: center">
+    <tr>
+        <th>Info</th>
+    </tr>
+    <tr>
+        <th>name</th>
+        <th>option(<a th:href="@{/insert}">insert</a>)</th>
+    </tr>
+    <tr th:each="employee:${employees}">
+        <td th:text="${employee.name}"></td>
+        <td>
+            <a th:href="@{'/selectOne/'+${employee.id}}">update</a>
+            <a @click="delete" th:href="@{'/delete/'+${employee.id}}">delete</a>
+        </td>
+    </tr>
+</table>
+<form id="deleteFrom" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: "#dataTable",
+        methods: {
+            delete: function (event) {
+                //根据id获取表单元素
+                var deleteFrom = document.getElementById("deleteFrom");
+                //触发点击事件的超链接的href属性给表单的action
+                deleteFrom.action = event.target.href;
+                //提交表单
+                deleteFrom.submit();
+                //取消超链接默认行为
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+</body>
+</html>

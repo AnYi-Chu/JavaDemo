@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--    创建对象-->
-    <bean id="user" class="ioc.xml.User" p:sex="female">
+    <bean id="user" class="spring.ioc.xml.User" p:sex="female">
         <!--    set方法注入属性-->
         <property name="name" value="anyi"/>
         <!--    有参构造注入属性-->
@@ -14,16 +14,16 @@
         <property name="book.name" value="资治通鉴"></property>
     </bean>
 
-    <bean id="book" class="ioc.xml.Book">
+    <bean id="book" class="spring.ioc.xml.Book">
         <!--    注入外部bean-->
         <property name="user" ref="user"></property>
         <!--    注入内部bean-->
         <property name="teacher">
-            <bean id="teacher" class="ioc.xml.Teacher"></bean>
+            <bean id="teacher" class="spring.ioc.xml.Teacher"></bean>
         </property>
     </bean>
 
-    <bean id="teacher" class="ioc.xml.Teacher">
+    <bean id="teacher" class="spring.ioc.xml.Teacher">
         <!--    注入list-->
         <property name="list">
             <list>

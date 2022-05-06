@@ -1,5 +1,5 @@
-import aop.annotation.User;
-import aop.xml.Book;
+import spring.aop.annotation.User;
+import spring.aop.xml.Book;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

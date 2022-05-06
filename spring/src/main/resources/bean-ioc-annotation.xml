@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--    开启组件扫描-->
-    <context:component-scan base-package="ioc.annotation" use-default-filters="false">
+    <context:component-scan base-package="spring.ioc.annotation" use-default-filters="false">
         <!--    use-default-filters="false"即使用自己配置的规则扫描-->
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>

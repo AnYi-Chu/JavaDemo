@@ -1,5 +1,5 @@
-import jdbcTemplate.Book;
-import jdbcTemplate.BookService;
+import spring.jdbcTemplate.Book;
+import spring.jdbcTemplate.BookService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

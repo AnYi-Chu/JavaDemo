@@ -1,4 +1,4 @@
-import affair.service.UserService;
+import spring.affair.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
