@@ -32,10 +32,51 @@
 
     <!--视图控制器-->
     <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/insert" view-name="insert"/>
+    <mvc:view-controller path="/file" view-name="file"/>
 
     <!--开放静态资源访问-->
     <mvc:default-servlet-handler/>
 
     <!--开启MVC的注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="defaultCharset" value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <!--bean、ref、interceptor三选一-->
+        <bean class="springMVC.interceptors.FirstInterceptors"/>
+        <ref bean="secondInterceptors"/>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--放行的请求-->
+            <mvc:exclude-mapping path="/"/>
+            <ref bean="firstInterceptors"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--配置异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.ArithmeticException">error</prop>
+            </props>
+        </property>
+        <!--设置异常信息共享在请求域中的键-->
+        <property name="exceptionAttribute" value="ex"></property>
+    </bean>
 </beans>
