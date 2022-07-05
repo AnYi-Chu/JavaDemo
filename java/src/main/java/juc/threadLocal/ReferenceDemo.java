@@ -11,11 +11,17 @@ class MyObject {
     }
 }
 
-public class ReferenceDemo {
+/*
+ * 强引用gc即便出现内存溢出也不回收
+ * 软引用gc当且仅当在系统内存不足时会被回收
+ * 弱引用gc总会被回收
+ * 虚引用必须和引用队列ReferenceQueue联合使用，get()返回为null，处理监控通知使用，常做事后清理工作
+ * */
+public class ReferenceDemo {    //对象引用
     public static void main(String[] args) {
         MyObject myObject = new MyObject();
-        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
-        PhantomReference<MyObject> phantomReference = new PhantomReference<>(myObject, referenceQueue);
+        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>(); //引用队列
+        PhantomReference<MyObject> phantomReference = new PhantomReference<>(myObject, referenceQueue); //虚引用，必须和引用队列ReferenceQueue联合使用
         ArrayList<byte[]> list = new ArrayList<>();
 
         new Thread(() -> {
@@ -41,7 +47,7 @@ public class ReferenceDemo {
         }, "t2").start();
     }
 
-    private static void weakReference() {
+    private static void weakReference() {   //弱引用，gc总会被回收
         WeakReference<MyObject> myObjectWeakReference = new WeakReference<>(new MyObject());
         System.out.println("------gc after内存够用：" + myObjectWeakReference.get());
 
@@ -55,7 +61,7 @@ public class ReferenceDemo {
         System.out.println("gc after内存够用：" + myObjectWeakReference.get());
     }
 
-    private static void softReference() {
+    private static void softReference() {   //软引用，gc当且仅当在系统内存不足时会被回收
         SoftReference<MyObject> softReference = new SoftReference<>(new MyObject());
         System.out.println("------softReference：" + softReference.get());
 
@@ -76,7 +82,7 @@ public class ReferenceDemo {
         }
     }
 
-    private static void strongReference() {
+    private static void strongReference() { //强引用，gc即便出现内存溢出也不回收
         MyObject myObject = new MyObject();
         System.out.println("gc before：" + myObject);
 

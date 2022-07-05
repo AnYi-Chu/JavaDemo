@@ -2,7 +2,7 @@ package juc.atomic;
 
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
-public class AtomicIntegerArrayDemo {
+public class AtomicIntegerArrayDemo {   //数组类型原子类
     public static void main(String[] args) {
 //        AtomicIntegerArray atomicIntegerArray = new AtomicIntegerArray(new int[5]);
         AtomicIntegerArray atomicIntegerArray = new AtomicIntegerArray(5);

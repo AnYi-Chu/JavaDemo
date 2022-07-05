@@ -11,12 +11,12 @@ class MyNumber {
     }
 }
 
-public class AtomicIntegerDemo {
+public class AtomicIntegerDemo {    //基本类型原子类
     public static final int SIZE = 50;
 
     public static void main(String[] args) throws InterruptedException {
         MyNumber myNumber = new MyNumber();
-        CountDownLatch countDownLatch = new CountDownLatch(SIZE);
+        CountDownLatch countDownLatch = new CountDownLatch(SIZE);   //同步计数器
 
         for (int i = 1; i <= SIZE; i++) {
             new Thread(() -> {
@@ -25,7 +25,7 @@ public class AtomicIntegerDemo {
                         myNumber.addPlusPlus();
                     }
                 } finally {
-                    countDownLatch.countDown();
+                    countDownLatch.countDown(); //计数器减一
                 }
             }, String.valueOf(i)).start();
         }

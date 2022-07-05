@@ -4,8 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 /*死锁排查
  * 1.使用命令jps -l找到进程对应的编号，使用命令jstack 进程编号查看
- * 2.运行命令jconsole查看*/
-public class DeadLockDemo {
+ * 2.运行命令jconsole查看
+ * */
+public class DeadLockDemo { //死锁
     public static void main(String[] args) {
         final Object objectA = new Object();
         final Object objectB = new Object();

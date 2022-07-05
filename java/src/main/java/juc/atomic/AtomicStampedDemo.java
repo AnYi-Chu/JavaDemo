@@ -14,7 +14,10 @@ class Book {
     private String bookName;
 }
 
-public class AtomicStampedDemo {
+/*
+ * AtomicStampedReference拥有版本号，处理修改过几次的问题
+ * */
+public class AtomicStampedDemo {    //拥有版本号的原子引用
     public static void main(String[] args) {
         Book javaBook = new Book(1, "javaBook");
         AtomicStampedReference<Book> stampedReference = new AtomicStampedReference<>(javaBook, 1);

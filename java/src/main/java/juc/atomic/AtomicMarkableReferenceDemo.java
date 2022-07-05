@@ -3,7 +3,10 @@ package juc.atomic;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
-public class AtomicMarkableReferenceDemo {
+/*
+ * AtomicMarkableReference拥有是否标记，处理是否修改的问题
+ * */
+public class AtomicMarkableReferenceDemo {  //拥有标记的原子引用
     static AtomicMarkableReference markableReference = new AtomicMarkableReference(100, false);
 
     public static void main(String[] args) {

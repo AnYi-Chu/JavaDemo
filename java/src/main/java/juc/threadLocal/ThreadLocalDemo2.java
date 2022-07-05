@@ -4,14 +4,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 class MyData {
-    ThreadLocal<Integer> threadLocalFied = ThreadLocal.withInitial(() -> 0);
+    ThreadLocal<Integer> threadLocalField = ThreadLocal.withInitial(() -> 0);
 
     public void add() {
-        threadLocalFied.set(1 + threadLocalFied.get());
+        threadLocalField.set(1 + threadLocalField.get());
     }
 }
 
-public class ThreadLocalDemo2 {
+public class ThreadLocalDemo2 { //在线程池中由于线程复用导致的内存泄漏
     public static void main(String[] args) {
         MyData myData = new MyData();
 
@@ -21,12 +21,12 @@ public class ThreadLocalDemo2 {
             for (int i = 0; i < 10; i++) {
                 threadPool.submit(() -> {
                     try {
-                        Integer beforeInt = myData.threadLocalFied.get();
+                        Integer beforeInt = myData.threadLocalField.get();
                         myData.add();
-                        Integer afterInt = myData.threadLocalFied.get();
+                        Integer afterInt = myData.threadLocalField.get();
                         System.out.println(Thread.currentThread().getName() + "\t" + "beforeInt：" + beforeInt + "\t" + "afterInt：" + afterInt);
                     } finally {
-                        myData.threadLocalFied.remove();
+                        myData.threadLocalField.remove();   //防止内存泄露
                     }
                 });
             }

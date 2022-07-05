@@ -23,7 +23,7 @@ class MyVar {
     }
 }
 
-public class AtomiceReferenceFieldUpdaterDemo {
+public class AtomiceReferenceFieldUpdaterDemo { //原子引用字段修改
     public static void main(String[] args) {
         MyVar myVar = new MyVar();
 

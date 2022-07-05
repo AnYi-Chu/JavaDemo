@@ -31,6 +31,16 @@ class ClickNumber {
     }
 }
 
+/*
+ * AtomicLong是多个线程针对单一热点值value进行原子操作，保证精度牺牲性能
+ *      方法：getAndIncrement()
+ *      原理：CAS+自旋
+ *      场景：低并发下全局计算
+ * LongAdder是多个线程都只针对自己拥有专属的槽的值进行CAS操作，保证性能牺牲精度
+ *      方法：increment()
+ *      原理：CAS+Base+Cell数组分散
+ *      场景：高并发下全局计算
+ * */
 public class AccumulatorCompareDemo {
     public static final int _1W = 10000;
     public static final int threadNumber = 50;
@@ -49,7 +59,7 @@ public class AccumulatorCompareDemo {
             new Thread(() -> {
                 try {
                     for (int j = 1; j <= 100 * _1W; j++) {
-                        clickNumber.clickBySynchronized();
+                        clickNumber.clickBySynchronized();  //通过Synchronized统计
                     }
                 } finally {
                     countDownLatch1.countDown();
@@ -65,7 +75,7 @@ public class AccumulatorCompareDemo {
             new Thread(() -> {
                 try {
                     for (int j = 1; j <= 100 * _1W; j++) {
-                        clickNumber.clickByAtomicLong();
+                        clickNumber.clickByAtomicLong();    //通过AtomicLong统计
                     }
                 } finally {
                     countDownLatch2.countDown();
@@ -81,7 +91,7 @@ public class AccumulatorCompareDemo {
             new Thread(() -> {
                 try {
                     for (int j = 1; j <= 100 * _1W; j++) {
-                        clickNumber.clickByLongAdder();
+                        clickNumber.clickByLongAdder(); //通过LongAdder统计
                     }
                 } finally {
                     countDownLatch3.countDown();
@@ -97,7 +107,7 @@ public class AccumulatorCompareDemo {
             new Thread(() -> {
                 try {
                     for (int j = 1; j <= 100 * _1W; j++) {
-                        clickNumber.clickByLongAccumulator();
+                        clickNumber.clickByLongAccumulator();   //通过LongAccumulator统计
                     }
                 } finally {
                     countDownLatch4.countDown();

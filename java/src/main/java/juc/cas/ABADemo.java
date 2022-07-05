@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
-public class ABADemo {
+public class ABADemo {  //带版本号的原子引用
     static AtomicInteger atomicInteger = new AtomicInteger(100);
     static AtomicStampedReference<Integer> stampedReference = new AtomicStampedReference(100, 1);
 

@@ -22,10 +22,10 @@ class Phone {
 }
 
 /*
- * 1.一个对象里如果有多个synchronized方法，在某一时刻内只能由唯一一个线程访问这些synchronized方法，即使用对象锁后，其他线程不能进入当前实例对象的其他的synchronized方法
- * 2.一个对象里如果有多个static synchronized方法，在某一时刻内只能由唯一一个线程访问这些static synchronized方法，即使用类锁后，其他线程不能进入该类的实例对象的static synchronized方法
+ * 1.一个对象里如果有多个synchronized方法，在某一时刻内只能由唯一一个线程访问这些synchronized方法，即使用对象锁（堆）后，其他线程不能进入当前实例对象的其他的synchronized方法
+ * 2.一个对象里如果有多个static synchronized方法，在某一时刻内只能由唯一一个线程访问这些static synchronized方法，即使用类锁（方法区）后，其他线程不能进入该类的实例对象的static synchronized方法
  * 3.static synchronized方法和synchronized方法之间不会有竞态条件*/
-public class Lock8Demo {
+public class Lock8Demo {    //锁应用
     public static void main(String[] args) {
         Phone phone = new Phone();
         Phone phone2 = new Phone();
@@ -43,7 +43,7 @@ public class Lock8Demo {
         new Thread(() -> {
 //            phone.sendSMS();
 //            phone.hello();
-            phone2.sendSMS();
+//            phone2.sendSMS();
         }, "b").start();
     }
 }

@@ -14,7 +14,7 @@ class User {
     Integer age;
 }
 
-public class AtomicReferenceDemo {
+public class AtomicReferenceDemo {  //原子引用
     public static void main(String[] args) {
         AtomicReference<User> atomicReference = new AtomicReference<>();
 
