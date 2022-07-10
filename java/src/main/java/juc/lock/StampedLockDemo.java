@@ -3,7 +3,7 @@ package juc.lock;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
 
-public class StampedLockDemo {
+public class StampedLockDemo {  //邮戳锁
     static int number = 37;
     static StampedLock stampedLock = new StampedLock();
 

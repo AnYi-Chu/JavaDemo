@@ -4,8 +4,11 @@ import org.openjdk.jol.info.ClassLayout;
 
 import java.util.concurrent.TimeUnit;
 
-public class SynchronizedUpDemo {   //无锁->偏向锁->轻锁->重锁
-    public static void main(String[] args) {
+/*
+ * 锁升级：无锁->偏向锁->轻锁->重锁
+ * */
+public class SynchronizedUpDemo {
+    public static void main(String[] args) {    //锁升级
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
