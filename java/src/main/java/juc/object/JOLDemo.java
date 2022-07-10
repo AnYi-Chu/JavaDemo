@@ -1,7 +1,10 @@
 package juc.object;
 
 import org.openjdk.jol.info.ClassLayout;
-
+/*
+* -XX:+PrintCommandLineFlags -version
+* -XX:+UseCompressedClassPointers默认开启压缩指针
+* */
 public class JOLDemo {  //jol
     public static void main(String[] args) {
 //        System.out.println(VM.current().details());   //VM详细信息

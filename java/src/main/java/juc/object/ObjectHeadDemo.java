@@ -21,10 +21,11 @@ package juc.object;
  *               25bit            31bit                           分代年龄         偏向锁         锁标志位
  * 无锁          unnsed           hashCode         cms_free        分代年龄         0               01
  * 偏向锁        ThreadID(54bit) Epoch(2bit)       cms_free                        1               01
- * 轻量级锁                                 指向栈中的记录的指针                                       00
- * 重量级锁                                 指向重量级锁的指针                                         10
+ * 轻量级锁                                 指向栈中的Lock Record的指针                                00
+ * 重量级锁                                 指向堆中monitor对象的指针                                         10
  * GC标志                                         空                                               11
  * *********************************************************************************************************
+ * 分代年龄用4bit存储，最大15
  * */
 public class ObjectHeadDemo {
     public static void main(String[] args) {
