@@ -3,11 +3,17 @@ package juc.lock;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
 
+/*
+ * 无锁->独占锁->读写锁->邮戳锁
+ * 读写锁降级后，读的过程中允许写锁上锁
+ * StampedLock访问模式：悲观读、写、乐观读
+ * 缺点：不能重入，不支持条件变量，不能中断
+ * */
 public class StampedLockDemo {  //邮戳锁
     static int number = 37;
     static StampedLock stampedLock = new StampedLock();
 
-    public void write() {
+    public void write() {   //写锁
         long stamp = stampedLock.writeLock();
         System.out.println(Thread.currentThread().getName() + "\t" + "写线程准备修改");
         try {
@@ -18,7 +24,7 @@ public class StampedLockDemo {  //邮戳锁
         System.out.println(Thread.currentThread().getName() + "\t" + "写线程结束修改");
     }
 
-    public void read() {    //悲观读，读未完成时写锁无法获得锁
+    public void read() {    //读锁，读未完成时写锁无法获得锁
         long stamp = stampedLock.readLock();
         System.out.println(Thread.currentThread().getName() + "\t" + "读线程准备修改");
         for (int i = 0; i < 4; i++) {
@@ -39,7 +45,7 @@ public class StampedLockDemo {  //邮戳锁
     }
 
 
-    public void tryOptimisticRead() {
+    public void tryOptimisticRead() {   //乐观读，读的过程中允许写锁上锁
         long stamp = stampedLock.tryOptimisticRead();
         int result = number;
         System.out.println("4秒前stampedLock.validate的方法值" + "\t" + stampedLock.validate(stamp)); //ture无修改，false有修改

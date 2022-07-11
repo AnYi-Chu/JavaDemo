@@ -50,6 +50,10 @@ class MyResource {
     }
 }
 
+/*
+ * 锁饥饿：读锁多写锁少，写锁抢不到
+ * 读写锁：读写互斥，读读共享，读锁没有完成前，写锁无法获得
+ * */
 public class ReentrantReadWriteLockDemo {   //读写锁
     public static void main(String[] args) {
         MyResource myResource = new MyResource();
