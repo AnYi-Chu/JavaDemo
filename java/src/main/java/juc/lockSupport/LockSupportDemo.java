@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * lock+await+signal，await()和signal()必须在lock内，且await()在signal()前执行
  * LockSupport+park+unpark，park()必须与unpark()配对,且unpark()只能使用一次，无顺序要求
  * */
-public class LockSupportDemo {  //线程唤醒
+public class LockSupportDemo {  //线程等待唤醒机制
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + "\t ------come in");

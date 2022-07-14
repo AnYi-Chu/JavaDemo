@@ -1,10 +1,7 @@
 package juc.aqs;
 
 import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.LockSupport;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.*;
 
 /*
  * AQS是抽象的队列同步器，分为一个抽象的先进先出的双向队列和一个int变量表示持有锁的状态
@@ -22,6 +19,14 @@ public class AQSDemo {
 //        readWriteLock.readLock().unlock();
 //        readWriteLock.writeLock().lock();
 //        readWriteLock.writeLock().unlock();
+
+//        StampedLock stampedLock = new StampedLock();
+//        long readLock = stampedLock.readLock();
+//        stampedLock.unlockRead(readLock);
+//        long writeLock = stampedLock.writeLock();
+//        stampedLock.unlockWrite(writeLock);
+//        long tryOptimisticRead = stampedLock.tryOptimisticRead();
+//        stampedLock.validate(tryOptimisticRead);
 //
 //        CountDownLatch countDownLatch = new CountDownLatch(10);
 //        countDownLatch.countDown();

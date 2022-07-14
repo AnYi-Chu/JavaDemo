@@ -8,7 +8,7 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848 #配置nacos地址
-    sentinel:
+    sentinel: #持久化sentinel
       transport:
         dashboard: localhost:8080 #配置sentinel dashboard地址
         port: 8719  #默认 端口，如果被占用将从此依次加一扫描

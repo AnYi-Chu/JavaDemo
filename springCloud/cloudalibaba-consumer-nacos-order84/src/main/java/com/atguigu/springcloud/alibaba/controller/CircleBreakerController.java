@@ -23,12 +23,12 @@ public class CircleBreakerController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/consumer/fallback/{id}")
-//    @SentinelResource(value = "fallback") //fallback负责业务异常
-//    @SentinelResource(value = "fallback", fallback = "handlerFallback")   //blockHandler负责控制台配置违规
-//    @SentinelResource(value = "fallback", blockHandler = "blockHandler")
+//    @SentinelResource(value = "fallback")
+//    @SentinelResource(value = "fallback", fallback = "handlerFallback")   //fallback负责业务异常
+//    @SentinelResource(value = "fallback", blockHandler = "blockHandler")  //blockHandler负责控制台配置违规
     @SentinelResource(value = "fallback", fallback = "handlerFallback",
             blockHandler = "blockHandler",
-            exceptionsToIgnore = {IllegalArgumentException.class})
+            exceptionsToIgnore = {IllegalArgumentException.class})  //只会进入blockHandler处理逻辑
     public CommonResult<Payment> fallback(@PathVariable Long id) {
         CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "paymentSQL" + id, CommonResult.class, id);
         if (id == 4) {

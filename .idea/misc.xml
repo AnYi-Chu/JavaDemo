@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/springBoot/springboot-data" />
+    <file type="web" url="file://$PROJECT_DIR$/springboot" />
+    <file type="web" url="file://$PROJECT_DIR$/springboot/springboot-data" />
     <file type="web" url="file://$PROJECT_DIR$/springMVC" />
     <type id="Spring" />
   </component>
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/springCloud/pom.xml" />
         <option value="$PROJECT_DIR$/springcloud/pom.xml" />
         <option value="$PROJECT_DIR$/java/pom.xml" />
+        <option value="$PROJECT_DIR$/boot/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
