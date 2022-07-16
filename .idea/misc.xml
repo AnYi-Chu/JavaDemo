@@ -17,6 +17,8 @@
         <option value="$PROJECT_DIR$/springcloud/pom.xml" />
         <option value="$PROJECT_DIR$/java/pom.xml" />
         <option value="$PROJECT_DIR$/boot/pom.xml" />
+        <option value="$PROJECT_DIR$/boot-redis01/pom.xml" />
+        <option value="$PROJECT_DIR$/boot-redis02/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -13,10 +13,12 @@
         <module name="cloudalibaba-consumer-nacos-order84" />
         <module name="cloud-consumer-feign-hystrix-order80" />
         <module name="cloud-stream-rabbitmq-provider8801" />
+        <module name="boot-redis01" />
         <module name="cloud-consumerzk-order80" />
         <module name="cloud-consumerconsul-order80" />
         <module name="cloud-stream-rabbitmq-consumer8802" />
         <module name="springboot" />
+        <module name="boot-redis02" />
         <module name="cloud-stream-rabbitmq-consumer8803" />
         <module name="spring" />
         <module name="cloud-config-center-3344" />
@@ -51,6 +53,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="boot-redis01" options="-parameters" />
+      <module name="boot-redis02" options="-parameters" />
       <module name="springBoot" options="-parameters" />
       <module name="springboot" options="-parameters" />
     </option>
