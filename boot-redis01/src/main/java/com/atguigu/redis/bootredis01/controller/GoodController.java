@@ -52,7 +52,7 @@ public class GoodController {
                         continue;
                     }
                 }
-                stringRedisTemplate.unwatch();  //解锁
+                stringRedisTemplate.unwatch();  //解除监控
                 break;
             }
         }
