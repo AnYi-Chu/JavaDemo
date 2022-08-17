@@ -1,0 +1,17 @@
+server:
+  port: 1111
+
+spring:
+  redis:
+    database: 0 #redis\u7D22\u5F15\uFF0C\u9ED8\u8BA4
+    host: 192.168.88.130  #redis\u5730\u5740
+    port: 6379  #redis\u7AEF\u53E3\uFF0C\u9ED8\u8BA4
+    password: #redis\u5BC6\u7801\uFF0C\u9ED8\u8BA4
+    timeout: 3000 #\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
+    lettuce:
+      pool:
+        max-active: 8 #\u8FDE\u63A5\u6C60\u6700\u5927\u8FDE\u63A5\u6570\uFF1A\u9ED8\u8BA4
+        max-wait: -1  #\u8FDE\u63A5\u6C60\u6700\u5927\u963B\u585E\u7B49\u5F85\u65F6\u95F4\uFF0C\u590D\u6570\u6CA1\u6709\u9650\u5236\uFF0C\u9ED8\u8BA4
+        max-idle: 8 #\u8FDE\u63A5\u6C60\u6700\u5927\u7A7A\u95F2\u8FDE\u63A5\u6570
+        min-idle: 0 #\u8FDE\u63A5\u6C60\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570
+
